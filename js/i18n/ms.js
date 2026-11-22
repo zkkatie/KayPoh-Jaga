@@ -1,0 +1,70 @@
+// Bahasa Melayu (Malay). Same keys as en.js.
+// Please have a native speaker review before launch.
+export default {
+  appName: "Kaypoh Jaga",
+  checkHeading: "Semak iklan",
+  resultHeading: "Apa yang kami temui",
+  inputLabel: "Tampal iklan atau mesej di sini",
+  inputHint: "Salin perkataan dan pautan daripada iklan, kemudian tampal di dalam kotak.",
+  checkButton: "Semak iklan ini",
+  or: "atau",
+  photoButton: "Semak tangkapan skrin",
+  photoHint: "Pilih tangkapan skrin daripada gambar anda, atau ambil gambar iklan itu. Gambar anda kekal di peranti anda.",
+  photoHintDesktop: "Anda juga boleh tekan Ctrl+V untuk menampal tangkapan skrin.",
+  photoAlt: "Gambar yang anda pilih",
+  ocr: {
+    preparing: "Sedang bersedia untuk membaca gambar anda… Kali pertama mengambil masa sedikit lebih lama.",
+    reading: "Sedang membaca perkataan dalam gambar anda…",
+    done: "Kami telah membaca perkataan ini daripada gambar anda dan meletakkannya dalam kotak di atas. Jika ada perkataan yang salah, betulkan dan tekan \"Semak iklan ini\" sekali lagi.",
+    noText: "Kami tidak menemui sebarang perkataan dalam gambar ini. Cuba tangkapan skrin yang lebih jelas, atau taip perkataan daripada iklan itu ke dalam kotak.",
+    loadFailed: "Kami tidak dapat memuatkan pembaca gambar. Semak sambungan internet anda dan cuba lagi.",
+    notImage: "Fail itu bukan gambar. Sila pilih tangkapan skrin atau foto.",
+    lowConfidence: "Gambar ini sukar dibaca, jadi mungkin ada perkataan yang salah. Sila semak perkataan dalam kotak.",
+  },
+  clearButton: "Padam",
+  madeBy: "Dibuat oleh Katie",
+  portfolioLink: "Lihat portfolio saya",
+
+  levels: {
+    likelyScam: { meter: "Risiko tinggi", title: "Ini kelihatan seperti penipuan", advice: "Jangan klik sebarang pautan, muat turun apa-apa atau balas. Tunjukkan ini kepada ahli keluarga atau hubungi talian bantuan di bawah." },
+    beCareful: { meter: "Ada risiko", title: "Berhati-hati", advice: "Kami menemui beberapa tanda amaran. Semak dengan penganjur melalui laman web atau nombor telefon rasmi mereka sebelum anda mendaftar atau membayar." },
+    noFlagsFound: { meter: "Risiko rendah", title: "Tiada tanda amaran ditemui", advice: "Ini tidak bermakna iklan itu tulen. Jika ia meminta anda membayar, log masuk atau memuat turun apa-apa, semak dengan talian bantuan dahulu." },
+  },
+
+  reasonsHeading: "Mengapa kami fikir begitu",
+  goodSignsHeading: "Tanda baik",
+
+  reasons: {
+    apkDownload: "Ia meminta anda memuat turun dan memasang aplikasi daripada pautan. Penganjur sebenar menggunakan App Store atau Google Play. Aplikasi daripada pautan boleh mengambil alih telefon anda.",
+    unknownSources: "Ia menyuruh anda membenarkan aplikasi daripada \"sumber tidak diketahui\". Ini membolehkan aplikasi penipuan mengambil alih telefon anda.",
+    asksForSecrets: "Ia meminta kata laluan, OTP atau butiran bank. Organisasi sebenar tidak akan meminta maklumat ini.",
+    lookalikeGovLink: "Pautan itu kelihatan seperti laman web kerajaan tetapi bukan. Laman web kerajaan yang sebenar berakhir dengan .gov.sg.",
+    officialNameUnofficialLink: "Ia menggunakan nama kerajaan atau pertubuhan masyarakat, tetapi pautannya tidak pergi ke laman web rasmi .gov.sg.",
+    chatAppOnly: "Ia meminta anda mendaftar melalui WhatsApp atau Telegram. Penipu sering berbuat begini untuk bercakap dengan anda secara peribadi.",
+    asksForPayment: "Ia meminta anda membayar yuran atau deposit untuk menyertai.",
+    asksForId: "Ia meminta nombor NRIC, pasport atau tarikh lahir anda.",
+    linkShortener: "Ia menggunakan pautan pendek yang menyembunyikan destinasi sebenarnya.",
+    urgency: "Ia mendesak anda dengan \"tempat terhad\" atau \"hari ini sahaja\". Penipu mendesak anda supaya anda tidak berhenti untuk menyemak.",
+    tooGoodToBeTrue: "Ia menjanjikan wang tunai, hadiah atau lawatan percuma. Jika kedengaran terlalu bagus untuk menjadi kenyataan, biasanya memang begitu.",
+  },
+  goodSigns: {
+    onlyOfficialLinks: "Semua pautannya pergi ke laman web rasmi .gov.sg atau kedai aplikasi rasmi.",
+  },
+
+  helpPill: "Tidak pasti? Hubungi",
+  webPill: "Nasihat rasmi",
+  helpCall: "Talian Bantuan ScamShield. Percuma, 24 jam.",
+  helpWebsite: "Semak penipuan dan dapatkan nasihat dalam talian.",
+  pills: { serious: "Serius", mild: "Tanda amaran", good: "Tanda baik" },
+  meterLabel: "Meter risiko",
+  emptyInput: "Sila tampal iklan dahulu.",
+  languageLabel: "Bahasa",
+  readAloud: "Bacakan untuk saya",
+  stopReading: "Berhenti membaca",
+  howHeading: "Cara ia berfungsi",
+  howSteps: [
+    "Tampal iklan, atau muat naik tangkapan skrin",
+    "Kami mencari tanda amaran yang digunakan oleh penipu",
+    "Anda mendapat jawapan yang jelas dan langkah seterusnya",
+  ],
+};

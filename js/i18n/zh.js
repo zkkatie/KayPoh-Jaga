@@ -1,0 +1,70 @@
+// 简体中文 (Simplified Chinese). Same keys as en.js.
+// Please have a native speaker review before launch.
+export default {
+  appName: "Kaypoh Jaga",
+  checkHeading: "检查广告",
+  resultHeading: "检查结果",
+  inputLabel: "把广告或信息贴在这里",
+  inputHint: "复制广告里的文字和链接，然后贴在下面的框里。",
+  checkButton: "检查这个广告",
+  or: "或",
+  photoButton: "检查截图",
+  photoHint: "从相册选一张截图，或拍下广告的照片。您的图片只会留在您的设备上。",
+  photoHintDesktop: "您也可以按 Ctrl+V 粘贴截图。",
+  photoAlt: "您选择的图片",
+  ocr: {
+    preparing: "正在准备读取您的图片……第一次会比较久。",
+    reading: "正在读取图片里的文字……",
+    done: "我们已经读出图片里的文字，并放在上面的框里。如果有错字，请改正后再按“检查这个广告”。",
+    noText: "这张图片里找不到文字。请换一张更清楚的截图，或把广告的文字打进框里。",
+    loadFailed: "无法加载图片读取工具。请检查网络连接，然后再试一次。",
+    notImage: "这个文件不是图片。请选择截图或照片。",
+    lowConfidence: "这张图片不太清楚，有些字可能读错了。请检查框里的文字。",
+  },
+  clearButton: "清除",
+  madeBy: "由 Katie 制作",
+  portfolioLink: "看看我的作品集",
+
+  levels: {
+    likelyScam: { meter: "高风险", title: "这看起来是诈骗", advice: "不要点击任何链接、不要下载任何东西，也不要回复。请把这个给家人看，或拨打下面的热线。" },
+    beCareful: { meter: "有些风险", title: "要小心", advice: "我们发现了一些可疑迹象。在报名或付款之前，请通过主办方的官方网站或电话号码确认。" },
+    noFlagsFound: { meter: "低风险", title: "没有发现可疑迹象", advice: "这不代表广告一定是真的。如果它要您付款、登录或下载任何东西，请先拨打热线询问。" },
+  },
+
+  reasonsHeading: "我们的理由",
+  goodSignsHeading: "好的迹象",
+
+  reasons: {
+    apkDownload: "它要您通过链接下载并安装应用程序。真正的主办方会使用 App Store 或 Google Play。通过链接下载的应用程序可能会控制您的手机。",
+    unknownSources: "它叫您允许安装“未知来源”的应用程序。这会让诈骗应用程序控制您的手机。",
+    asksForSecrets: "它向您索取密码、OTP 或银行资料。正规机构绝不会向您索取这些资料。",
+    lookalikeGovLink: "这个链接看起来像政府网站，但其实不是。真正的政府网站以 .gov.sg 结尾。",
+    officialNameUnofficialLink: "它用了政府或社区机构的名字，但链接并不是官方的 .gov.sg 网站。",
+    chatAppOnly: "它要您通过 WhatsApp 或 Telegram 报名。骗子常用这种方法私下联系您。",
+    asksForPayment: "它要您付报名费或押金才能参加。",
+    asksForId: "它向您索取身份证号码、护照号码或出生日期。",
+    linkShortener: "它用了短链接，隐藏了真正的网址。",
+    urgency: "它用“名额有限”或“仅限今天”来催促您。骗子催您，是为了不让您停下来查证。",
+    tooGoodToBeTrue: "它承诺送现金、礼物或免费旅行。听起来好得不像真的，通常就不是真的。",
+  },
+  goodSigns: {
+    onlyOfficialLinks: "它所有的链接都通往官方的 .gov.sg 网站或官方应用商店。",
+  },
+
+  helpPill: "不确定？请拨打",
+  webPill: "官方建议",
+  helpCall: "ScamShield 防诈骗热线。免费，24 小时服务。",
+  helpWebsite: "上网查询诈骗信息和获取建议。",
+  pills: { serious: "严重", mild: "可疑迹象", good: "好的迹象" },
+  meterLabel: "风险指数",
+  emptyInput: "请先贴上广告。",
+  languageLabel: "语言",
+  readAloud: "读给我听",
+  stopReading: "停止朗读",
+  howHeading: "怎么用",
+  howSteps: [
+    "贴上广告，或上传截图",
+    "我们查看骗子常用的可疑迹象",
+    "您会得到清楚的答案，以及下一步该怎么做",
+  ],
+};
