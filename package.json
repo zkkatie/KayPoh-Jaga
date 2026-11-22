@@ -1,10 +1,10 @@
 {
   "name": "kaypoh-jaga",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "Checks suspicious ads before Singapore's seniors click them.",
   "type": "module",
   "private": true,
   "scripts": {
-    "test": "node test/engine.test.js"
+    "test": "node test/engine.test.js && node test/ocr.test.js"
   }
 }
