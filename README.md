@@ -4,7 +4,7 @@
 
 Kaypoh Jaga is a free web app that checks suspicious ads before Singapore's seniors click them. Paste the words from an ad, or upload a screenshot or photo of it, and it flags warning signs, like a request to download an app or a WhatsApp-only contact, then explains in plain language whether the ad looks safe.
 
-*An independent student project, not affiliated with any government agency.*
+*An independent student project*
 
 ## Why
 
