@@ -4,14 +4,14 @@
 export const STRINGS = {
   en: {
     appName: "Kaypoh Jaga",
-    tagline: "We kaypoh the ad. You stay safe.",
     checkHeading: "Check an ad",
     resultHeading: "What we found",
     inputLabel: "Paste the ad or message here",
     inputHint: "Copy the words and any link from the ad, then paste them in the box.",
     checkButton: "Check this ad",
     clearButton: "Clear",
-    disclaimer: "Kaypoh Jaga is an independent student project, not a government service. Nothing you paste leaves your phone.",
+    madeBy: "Made by Katie",
+    portfolioLink: "Check out my portfolio",
 
     levels: {
       likelyScam: { meter: "High risk", title: "This looks like a scam", advice: "Do not click any link, download anything or reply. Show this to a family member or call the helpline below." },
