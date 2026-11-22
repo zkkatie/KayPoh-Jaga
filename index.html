@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kaypoh Jaga — check the ad before you click</title>
+<link rel="icon" href="assets/logo.png">
+<meta name="description" content="Kaypoh Jaga checks suspicious ads before Singapore's seniors click them. Independent student project.">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<main class="wrap">
+  <header class="brand">
+    <h1 class="brand-logo"><img src="assets/logo.png" alt="Kaypoh Jaga" width="334" height="180"></h1>
+    <p class="tagline" data-s="tagline"></p>
+  </header>
+
+  <div class="grid">
+    <section class="panel" aria-labelledby="check-title">
+      <h2 class="panel-title" id="check-title" data-s="checkHeading"></h2>
+      <form id="check-form" class="card" novalidate>
+        <label for="ad" class="label" data-s="inputLabel"></label>
+        <p class="hint" id="ad-hint" data-s="inputHint"></p>
+        <textarea id="ad" rows="7" aria-describedby="ad-hint"></textarea>
+        <p class="error" id="error" role="alert" hidden></p>
+        <div class="actions">
+          <button type="submit" class="btn btn-primary" data-s="checkButton"></button>
+          <button type="button" class="btn btn-ghost" id="clear" data-s="clearButton"></button>
+        </div>
+      </form>
+    </section>
+
+    <section class="panel result-panel" id="result" aria-live="polite" hidden>
+      <h2 class="panel-title" data-s="resultHeading"></h2>
+      <div class="meter-wrap">
+        <svg id="meter" class="meter" viewBox="0 0 320 172" role="img" aria-labelledby="verdict-title"></svg>
+        <div class="meter-text">
+          <p class="meter-level" id="meter-level"></p>
+          <h3 id="verdict-title" tabindex="-1"></h3>
+        </div>
+      </div>
+      <p id="verdict-advice" class="advice"></p>
+
+      <div id="reasons-block">
+        <h3 class="list-title" data-s="reasonsHeading"></h3>
+        <ul id="reasons" class="reason-list"></ul>
+      </div>
+      <div id="good-block">
+        <h3 class="list-title" data-s="goodSignsHeading"></h3>
+        <ul id="good" class="reason-list"></ul>
+      </div>
+    </section>
+  </div>
+
+  <section class="help-row">
+    <a class="tile tile-green" href="tel:1799">
+      <span class="pill" data-s="helpPill"></span>
+      <span class="tile-big">1799</span>
+      <span data-s="helpCall"></span>
+    </a>
+    <a class="tile tile-blue" href="https://www.scamshield.gov.sg" target="_blank" rel="noopener">
+      <span class="pill" data-s="webPill"></span>
+      <span class="tile-big tile-site">scamshield.gov.sg</span>
+      <span data-s="helpWebsite"></span>
+    </a>
+  </section>
+
+  <footer>
+    <p data-s="disclaimer"></p>
+  </footer>
+</main>
+<script type="module" src="js/app.js"></script>
+</body>
+</html>

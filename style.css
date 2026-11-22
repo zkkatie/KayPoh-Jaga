@@ -1,0 +1,98 @@
+/* Look: cream panels, white cards, pastel olive / blue / yellow / pink, pill tags.
+   Built for older eyes: 20px base text, dark text on every colour, 56px buttons. */
+:root{
+  --bg:#ffffff;
+  --panel:#f8f1e3;          /* cream panel */
+  --card:#ffffff;
+  --ink:#1b1a17;
+  --ink-dim:#55524b;
+  --line:#ece3d1;
+  --empty:#efe8db;          /* unfilled meter segment */
+
+  --olive:#9cab63;   --olive-soft:#e4ead0;  --olive-ink:#3d4a16;
+  --blue:#b9cbec;    --blue-soft:#e3ebf8;   --blue-ink:#1f3f72;
+  --yellow:#f5d86c;  --yellow-soft:#fbf0c6; --yellow-ink:#6b5000;
+  --pink:#f79bd2;    --pink-soft:#fde0f1;   --pink-ink:#7d1550;
+
+  --radius-panel:28px;
+  --radius-card:18px;
+}
+*{ box-sizing:border-box; }
+html{ font-size:20px; }
+body{ margin:0; background:var(--bg); color:var(--ink); font-family:Inter, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; line-height:1.5; }
+.wrap{ max-width:1100px; margin:0 auto; padding:28px 20px 48px; }
+
+/* Header */
+.brand{ display:flex; align-items:flex-end; gap:18px; flex-wrap:wrap; margin-bottom:22px; }
+.brand-logo{ margin:0; line-height:0; }
+.brand-logo img{ width:200px; height:auto; display:block; }
+.tagline{ margin:0 0 10px; color:var(--ink-dim); font-size:.95rem; }
+
+/* Layout: two panels side by side on wide screens, stacked on phones */
+.grid{ display:grid; grid-template-columns:1fr; gap:18px; }
+@media (min-width:900px){
+  .grid.has-result{ grid-template-columns:1fr 1fr; align-items:start; }
+}
+
+.panel{ background:var(--panel); border-radius:var(--radius-panel); padding:22px; }
+.panel-title{ margin:0 0 14px 4px; font-size:1.05rem; font-weight:600; }
+.card{ background:var(--card); border-radius:var(--radius-card); padding:20px; }
+
+/* Form */
+.label{ display:block; font-weight:700; font-size:1.1rem; }
+.hint{ margin:4px 0 12px; color:var(--ink-dim); font-size:.9rem; }
+textarea{ width:100%; font:inherit; font-size:1rem; padding:14px; border:2px solid var(--line); border-radius:14px; resize:vertical; background:#fffdf8; }
+textarea:focus{ outline:3px solid var(--olive); outline-offset:2px; border-color:var(--olive); }
+.error{ color:var(--pink-ink); font-weight:700; margin:10px 0 0; }
+.actions{ display:flex; gap:12px; margin-top:16px; flex-wrap:wrap; }
+.btn{ font:inherit; font-weight:700; font-size:1.05rem; min-height:56px; padding:0 26px; border-radius:999px; cursor:pointer; border:2px solid transparent; }
+.btn-primary{ background:var(--ink); color:#fff; flex:1 1 220px; }
+.btn-primary:hover{ background:#333; }
+.btn-ghost{ background:var(--panel); color:var(--ink); border-color:var(--line); }
+.btn:focus-visible{ outline:3px solid var(--olive); outline-offset:3px; }
+
+/* Result: risk meter */
+.meter-wrap{ background:var(--card); border-radius:var(--radius-card); padding:22px 18px 20px; text-align:center; }
+.meter{ width:100%; max-width:340px; display:block; margin:0 auto; }
+.meter-text{ margin-top:-30px; }
+@media (min-width:600px){ .meter-text{ margin-top:-46px; } }
+.meter-level{ margin:0; font-size:clamp(1.6rem, 7vw, 2.1rem); font-weight:800; letter-spacing:-.03em; line-height:1; }
+.meter-text h3{ margin:6px 0 0; font-size:1.15rem; font-weight:600; }
+.meter-text h3:focus{ outline:none; }
+.advice{ margin:14px 4px 6px; font-weight:600; }
+
+.list-title{ margin:18px 4px 10px; font-size:1rem; font-weight:600; }
+.reason-list{ list-style:none; margin:0; padding:0; display:grid; gap:10px; }
+.reason{ background:var(--card); border-radius:var(--radius-card); padding:14px 16px; display:flex; gap:14px; align-items:flex-start; }
+.reason .dot{ flex:none; width:44px; height:44px; border-radius:50%; display:grid; place-items:center; font-weight:800; font-size:1rem; border:5px solid; }
+.reason .body{ min-width:0; }
+.reason .pill{ margin-bottom:4px; }
+.reason p{ margin:0; font-size:.95rem; }
+
+.reason.serious .dot{ border-color:var(--pink); color:var(--pink-ink); background:var(--pink-soft); }
+.reason.mild .dot{ border-color:var(--yellow); color:var(--yellow-ink); background:var(--yellow-soft); }
+.reason.good .dot{ border-color:var(--olive); color:var(--olive-ink); background:var(--olive-soft); }
+
+/* Pills */
+.pill{ display:inline-block; font-size:.75rem; font-weight:700; padding:3px 12px; border-radius:999px; }
+.reason.serious .pill{ background:var(--pink-soft); color:var(--pink-ink); }
+.reason.mild .pill{ background:var(--yellow-soft); color:var(--yellow-ink); }
+.reason.good .pill{ background:var(--olive-soft); color:var(--olive-ink); }
+
+/* Verdict colours on the big word */
+.result-panel.likelyScam .meter-level{ color:var(--pink-ink); }
+.result-panel.beCareful .meter-level{ color:var(--yellow-ink); }
+.result-panel.noFlagsFound .meter-level{ color:var(--olive-ink); }
+
+/* Help tiles */
+.help-row{ margin-top:18px; background:var(--panel); border-radius:var(--radius-panel); padding:18px; display:grid; grid-template-columns:1fr; gap:14px; }
+@media (min-width:700px){ .help-row{ grid-template-columns:1fr 1fr; } }
+.tile{ display:flex; flex-direction:column; gap:6px; padding:20px; border-radius:var(--radius-card); color:var(--ink); text-decoration:none; min-height:150px; }
+.tile:focus-visible{ outline:3px solid var(--ink); outline-offset:3px; }
+.tile-green{ background:var(--olive); }
+.tile-blue{ background:var(--blue); }
+.tile .pill{ align-self:flex-start; background:rgba(255,255,255,.65); color:var(--ink); }
+.tile-big{ font-size:2rem; font-weight:800; letter-spacing:-.02em; line-height:1.1; }
+.tile-site{ font-size:1.4rem; word-break:break-word; }
+
+footer{ color:var(--ink-dim); font-size:.8rem; text-align:center; margin-top:18px; }
