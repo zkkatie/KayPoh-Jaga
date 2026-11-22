@@ -22,6 +22,26 @@
         <label for="ad" class="label" data-s="inputLabel"></label>
         <p class="hint" id="ad-hint" data-s="inputHint"></p>
         <textarea id="ad" rows="7" aria-describedby="ad-hint"></textarea>
+
+        <div class="or" aria-hidden="true"><span data-s="or"></span></div>
+
+        <input type="file" id="photo" accept="image/*" class="visually-hidden">
+        <label class="btn btn-photo" for="photo">
+          <span class="photo-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 8h3l2-3h6l2 3h3v11H4z"/><circle cx="12" cy="13" r="3.5"/></svg>
+          </span>
+          <span data-s="photoButton"></span>
+        </label>
+        <p class="hint photo-hint"><span data-s="photoHint"></span> <span class="desktop-only" data-s="photoHintDesktop"></span></p>
+
+        <figure id="preview" class="preview" hidden>
+          <img id="preview-img" alt="">
+          <figcaption>
+            <span id="ocr-status" role="status"></span>
+            <span class="progress" id="ocr-bar-wrap" hidden><span id="ocr-bar"></span></span>
+          </figcaption>
+        </figure>
+
         <p class="error" id="error" role="alert" hidden></p>
         <div class="actions">
           <button type="submit" class="btn btn-primary" data-s="checkButton"></button>

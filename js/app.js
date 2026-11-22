@@ -1,5 +1,6 @@
 // Connects the page to the engine. All checking happens here in the browser.
 import { check, LEVELS } from "./engine.js";
+import { readImage } from "./ocr.js";
 import { t } from "./strings.js";
 
 const S = t("en");
@@ -73,20 +74,27 @@ function card(kind, text, mark) {
   return li;
 }
 
-$("check-form").addEventListener("submit", (e) => {
-  e.preventDefault();
+// ---------- messages ----------
+function showError(message) {
+  $("error").textContent = message;
+  $("error").hidden = false;
+}
+function hideError() {
+  $("error").hidden = true;
+}
+
+// ---------- checking ----------
+function runCheck() {
   const text = $("ad").value;
-  const err = $("error");
   const result = $("result");
 
   if (!text.trim()) {
-    err.textContent = S.emptyInput;
-    err.hidden = false;
+    showError(S.emptyInput);
     result.hidden = true;
     $("ad").focus();
     return;
   }
-  err.hidden = true;
+  hideError();
 
   const r = check(text);
   const level = S.levels[r.level];
@@ -103,15 +111,102 @@ $("check-form").addEventListener("submit", (e) => {
   $("good-block").hidden = r.goodSigns.length === 0;
 
   result.hidden = false;
-  document.querySelector(".grid").classList.add("has-result");
   result.scrollIntoView({ behavior: "smooth", block: "start" });
   $("verdict-title").focus({ preventScroll: true });
+}
+
+$("check-form").addEventListener("submit", (e) => {
+  e.preventDefault();
+  runCheck();
 });
 
+// ---------- screenshots and photos ----------
+let busy = false;
+let previewUrl = null;
+
+function setStatus(message, progress) {
+  $("ocr-status").textContent = message;
+  const showBar = typeof progress === "number";
+  $("ocr-bar-wrap").hidden = !showBar;
+  if (showBar) $("ocr-bar").style.width = `${Math.round(progress * 100)}%`;
+}
+
+async function checkImage(file) {
+  if (busy || !file) return;
+  if (!file.type.startsWith("image/")) {
+    showError(S.ocr.notImage);
+    return;
+  }
+  busy = true;
+  hideError();
+  $("result").hidden = true;
+  document.querySelector(".btn-photo").setAttribute("aria-disabled", "true");
+
+  if (previewUrl) URL.revokeObjectURL(previewUrl);
+  previewUrl = URL.createObjectURL(file);
+  $("preview-img").src = previewUrl;
+  $("preview-img").alt = S.photoAlt;
+  $("preview").hidden = false;
+  $("preview").scrollIntoView({ behavior: "smooth", block: "nearest" });
+
+  try {
+    const { text, confidence } = await readImage(file, (stage, p) => {
+      setStatus(stage === "reading" ? S.ocr.reading : S.ocr.preparing, stage === "reading" ? p : undefined);
+    });
+    if (!text.replace(/[^a-z0-9]/gi, "").length) {
+      setStatus("");
+      showError(S.ocr.noText);
+      return;
+    }
+    $("ad").value = text;
+    setStatus(confidence < 60 ? `${S.ocr.lowConfidence} ${S.ocr.done}` : S.ocr.done);
+    runCheck();
+  } catch (err) {
+    setStatus("");
+    showError(err && err.message === "load-failed" ? S.ocr.loadFailed : S.ocr.noText);
+  } finally {
+    busy = false;
+    document.querySelector(".btn-photo").removeAttribute("aria-disabled");
+    $("photo").value = ""; // lets the same picture be chosen again
+  }
+}
+
+$("photo").addEventListener("change", (e) => checkImage(e.target.files[0]));
+
+// Ctrl+V a screenshot anywhere on the page (computers).
+document.addEventListener("paste", (e) => {
+  const item = [...(e.clipboardData?.items || [])].find((i) => i.type.startsWith("image/"));
+  if (!item) return; // normal text paste carries on as usual
+  e.preventDefault();
+  checkImage(item.getAsFile());
+});
+
+// Drag a picture onto the box (computers).
+const form = $("check-form");
+form.addEventListener("dragover", (e) => {
+  if ([...e.dataTransfer.items].some((i) => i.kind === "file")) {
+    e.preventDefault();
+    form.classList.add("drop-active");
+  }
+});
+form.addEventListener("dragleave", () => form.classList.remove("drop-active"));
+form.addEventListener("drop", (e) => {
+  form.classList.remove("drop-active");
+  const file = [...e.dataTransfer.files].find((f) => f.type.startsWith("image/"));
+  if (file) {
+    e.preventDefault();
+    checkImage(file);
+  }
+});
+
+// ---------- clear ----------
 $("clear").addEventListener("click", () => {
   $("ad").value = "";
   $("result").hidden = true;
-  $("error").hidden = true;
-  document.querySelector(".grid").classList.remove("has-result");
+  $("preview").hidden = true;
+  setStatus("");
+  hideError();
+  if (previewUrl) URL.revokeObjectURL(previewUrl);
+  previewUrl = null;
   $("ad").focus();
 });
