@@ -32,7 +32,6 @@ function applyStrings() {
   $("lang-switch").setAttribute("aria-label", S.languageLabel);
   renderTrust();
   renderSigns();
-  renderAbout();
   $("how-steps").replaceChildren(...S.howSteps.map((step, i) => {
     const li = document.createElement("li");
     const n = document.createElement("span");
@@ -90,14 +89,6 @@ function renderSigns() {
     body.append(el("h3", null, sgn.title), el("p", null, sgn.text));
     li.append(ic, body);
     return li;
-  }));
-}
-
-function renderAbout() {
-  $("about-grid").replaceChildren(...S.about.map((a) => {
-    const card = el("article", "about-item");
-    card.append(el("h3", null, a.title), el("p", null, a.text));
-    return card;
   }));
 }
 

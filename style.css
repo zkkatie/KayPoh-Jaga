@@ -205,8 +205,8 @@ textarea:focus{ outline:3px solid var(--focus); outline-offset:2px; border-color
 .sign-row{ display:flex; gap:18px; align-items:flex-start; padding:22px 0; border-top:1px solid var(--line); }
 .sign-icon{ flex:none; width:44px; height:44px; border-radius:50%; display:grid; place-items:center; border:1px solid var(--line); color:var(--coral); background:var(--card); }
 .sign-icon svg{ width:22px; height:22px; fill:none; stroke:currentColor; stroke-width:1.8; stroke-linecap:round; stroke-linejoin:round; }
-.sign-row h3, .about-item h3{ margin:0; font-family:var(--serif); font-weight:500; font-size:1.2rem; line-height:1.3; }
-.sign-row p, .about-item p{ margin:6px 0 0; color:var(--ink-dim); font-size:.88rem; }
+.sign-row h3{ margin:0; font-family:var(--serif); font-weight:500; font-size:1.2rem; line-height:1.3; }
+.sign-row p{ margin:6px 0 0; color:var(--ink-dim); font-size:.88rem; }
 
 /* Get help: a centred band with two big links */
 .section-help{ background:var(--paper-2); border-top:0; }
@@ -221,11 +221,6 @@ textarea:focus{ outline:3px solid var(--focus); outline-offset:2px; border-color
 .help-site{ font-style:italic; font-size:clamp(1.6rem, 4.6vw, 2.3rem); padding:.35em 0; overflow-wrap:anywhere; }
 .help-link:hover .help-big{ color:var(--coral-dark); }
 .help-link > span:last-child{ color:var(--ink-dim); font-size:.9rem; }
-
-/* About: three short columns */
-.about-grid{ display:grid; grid-template-columns:minmax(0,1fr); gap:0 40px; }
-@media (min-width:900px){ .about-grid{ grid-template-columns:repeat(3, minmax(0,1fr)); } }
-.about-item{ padding:22px 0; border-top:1px solid var(--line); }
 
 /* ---------- Footer ---------- */
 .site-footer{ border-top:1px solid var(--line); padding:56px 0 28px; font-size:.82rem; color:var(--ink-dim); }

@@ -46,7 +46,7 @@ npm test
 - **Mild signs alone can't make a "scam" verdict.** Early testing flagged a WhatsApp sign-up with a $10 fee and a short link as a scam. Genuine community groups do all three, so false alarms would teach users to ignore the app. Now a serious sign is required.
 - **Never say "safe".** The green result says no warning signs were found and still points to the 1799 ScamShield Helpline.
 - **Built for older users:** 20px base text, high-contrast colours, 56px buttons, one column, verdict shown by colour *and* words.
-- **A proper website, not just a form:** sticky top bar with the logo in the middle, a centred headline above the checker, a guide to the six warning signs, a help section, About and privacy, and a full footer. It adjusts from small phones (360px) to wide screens, with no sideways scrolling in any language.
+- **A proper website, not just a form:** sticky top bar with the logo in the middle, a centred headline above the checker, a guide to the six warning signs, a help section and a full footer. It adjusts from small phones (360px) to wide screens, with no sideways scrolling in any language.
 - **Looks right when shared:** a share image and description for WhatsApp, Telegram and LinkedIn previews, plus icons for browser tabs and phone home screens.
 - **Calm, editorial look:** warm paper background, a serif headline with one highlighted phrase, thin lines instead of boxes, round pill buttons, and one pop of colour (Kaypoh coral). The risk meter is a half circle of dots that fills green, amber, then red. Fonts (Newsreader and Inter, SIL Open Font Licence, `assets/fonts/`) are hosted with the app so no font requests go to other sites.
 
