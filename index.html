@@ -3,92 +3,215 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Kaypoh Jaga — check the ad before you click</title>
-<link rel="icon" href="assets/logo.png">
-<meta name="description" content="Kaypoh Jaga checks suspicious ads before Singapore's seniors click them. Independent student project.">
+<title>Kaypoh Jaga — Is this ad a scam? Check before you click</title>
+<meta name="description" content="Kaypoh Jaga checks suspicious ads before Singapore's seniors click them. Paste an ad or upload a screenshot to see the warning signs, in English, 中文, Melayu or தமிழ்.">
+<meta name="theme-color" content="#f2efe6">
+<link rel="icon" type="image/png" sizes="64x64" href="assets/icon-64.png">
+<link rel="apple-touch-icon" href="assets/icon-180.png">
+<link rel="preload" href="assets/fonts/newsreader-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="assets/fonts/inter-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
+
+<!-- How the link looks when shared on WhatsApp, Telegram, LinkedIn or Facebook -->
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Kaypoh Jaga">
+<meta property="og:title" content="Kaypoh Jaga — Is this ad a scam? Check before you click">
+<meta property="og:description" content="Paste an ad or upload a screenshot. Kaypoh Jaga helps seniors steer clear of scams.">
+<meta property="og:url" content="https://zkkatie.github.io/KayPoh-Jaga/">
+<meta property="og:image" content="https://zkkatie.github.io/KayPoh-Jaga/assets/share.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
-<main class="wrap">
-  <header class="brand">
-    <h1 class="brand-logo"><img src="assets/logo.png" alt="Kaypoh Jaga" width="334" height="180"></h1>
-    <p class="tagline" data-s="tagline"></p>
-  </header>
+<a class="skip-link" href="#check" data-s="skipLink"></a>
 
-  <div class="grid">
-    <section class="panel" aria-labelledby="check-title">
-      <h2 class="panel-title" id="check-title" data-s="checkHeading"></h2>
-      <form id="check-form" class="card" novalidate>
-        <label for="ad" class="label" data-s="inputLabel"></label>
-        <p class="hint" id="ad-hint" data-s="inputHint"></p>
-        <textarea id="ad" rows="7" aria-describedby="ad-hint"></textarea>
+<!-- ============ Top bar: links left, logo in the middle, languages right ============ -->
+<header class="site-nav">
+  <div class="container nav-inner">
+    <nav class="nav-links" aria-label="Sections">
+      <a href="#how" data-s="navHow"></a>
+      <a href="#signs" data-s="navSigns"></a>
+      <a href="#help" data-s="navHelp"></a>
+    </nav>
+    <a class="nav-brand" href="#top" aria-label="Kaypoh Jaga">
+      <img src="assets/logo.png" alt="Kaypoh Jaga" width="334" height="180">
+    </a>
+    <div class="lang-switch" id="lang-switch" role="group" aria-label="Language"></div>
+  </div>
+</header>
 
-        <div class="or" aria-hidden="true"><span data-s="or"></span></div>
+<main id="top">
+  <!-- ============ Hero: one calm headline, then the checker ============ -->
+  <section class="hero">
+    <div class="container hero-inner">
+      <p class="eyebrow" data-s="heroEyebrow"></p>
+      <h1 class="hero-title"><span data-s="heroTitle"></span> <em class="hl" data-s="heroTitleEm"></em></h1>
+      <p class="hero-text" data-s="heroText"></p>
+      <ul class="trust" id="trust"></ul>
+    </div>
 
-        <input type="file" id="photo" accept="image/*" class="visually-hidden">
-        <label class="btn btn-photo" for="photo">
-          <span class="photo-icon" aria-hidden="true">
-            <svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 8h3l2-3h6l2 3h3v11H4z"/><circle cx="12" cy="13" r="3.5"/></svg>
-          </span>
-          <span data-s="photoButton"></span>
-        </label>
-        <p class="hint photo-hint"><span data-s="photoHint"></span> <span class="desktop-only" data-s="photoHintDesktop"></span></p>
+    <div class="container">
+      <section class="check-panel" id="check" aria-labelledby="check-title">
+        <h2 class="visually-hidden" id="check-title" data-s="checkHeading"></h2>
+        <form id="check-form" novalidate>
+          <label for="ad" class="label" data-s="inputLabel"></label>
+          <p class="hint" id="ad-hint" data-s="inputHint"></p>
+          <textarea id="ad" rows="5" aria-describedby="ad-hint"></textarea>
 
-        <figure id="preview" class="preview" hidden>
-          <img id="preview-img" alt="">
-          <figcaption>
-            <span id="ocr-status" role="status"></span>
-            <span class="progress" id="ocr-bar-wrap" hidden><span id="ocr-bar"></span></span>
-          </figcaption>
-        </figure>
+          <div class="form-row">
+            <input type="file" id="photo" accept="image/*" class="visually-hidden">
+            <label class="btn btn-photo" for="photo">
+              <svg aria-hidden="true" viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 8h3l2-3h6l2 3h3v11H4z"/><circle cx="12" cy="13" r="3.5"/></svg>
+              <span data-s="photoButton"></span>
+            </label>
+            <div class="actions">
+              <button type="button" class="btn btn-ghost" id="clear" data-s="clearButton"></button>
+              <button type="submit" class="btn btn-primary" data-s="checkButton"></button>
+            </div>
+          </div>
+          <p class="hint photo-hint"><span data-s="photoHint"></span> <span class="desktop-only" data-s="photoHintDesktop"></span></p>
 
-        <p class="error" id="error" role="alert" hidden></p>
-        <div class="actions">
-          <button type="submit" class="btn btn-primary" data-s="checkButton"></button>
-          <button type="button" class="btn btn-ghost" id="clear" data-s="clearButton"></button>
+          <figure id="preview" class="preview" hidden>
+            <img id="preview-img" alt="">
+            <figcaption>
+              <span id="ocr-status" role="status"></span>
+              <span class="progress" id="ocr-bar-wrap" hidden><span id="ocr-bar"></span></span>
+            </figcaption>
+          </figure>
+
+          <p class="error" id="error" role="alert" hidden></p>
+        </form>
+      </section>
+    </div>
+  </section>
+
+<!-- ============ Result ============ -->
+  <div class="container">
+    <section class="result-panel" id="result" aria-live="polite" hidden>
+      <p class="label-sm" data-s="resultHeading"></p>
+      <div class="result-grid">
+        <div class="result-main">
+          <div class="meter-wrap">
+            <svg id="meter" class="meter" viewBox="0 0 320 172" role="img" aria-labelledby="verdict-title"></svg>
+            <div class="meter-text">
+              <p class="meter-level" id="meter-level"></p>
+              <h3 id="verdict-title" tabindex="-1"></h3>
+            </div>
+          </div>
+          <p id="verdict-advice" class="advice"></p>
+          <button type="button" class="btn btn-speak" id="speak" hidden>
+            <svg aria-hidden="true" viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 9v6h4l5 4V5L8 9z"/><path d="M16.5 8.5a5 5 0 0 1 0 7"/><path d="M19 6a8.5 8.5 0 0 1 0 12"/></svg>
+            <span id="speak-label"></span>
+          </button>
         </div>
-      </form>
-    </section>
-
-    <section class="panel result-panel" id="result" aria-live="polite" hidden>
-      <h2 class="panel-title" data-s="resultHeading"></h2>
-      <div class="meter-wrap">
-        <svg id="meter" class="meter" viewBox="0 0 320 172" role="img" aria-labelledby="verdict-title"></svg>
-        <div class="meter-text">
-          <p class="meter-level" id="meter-level"></p>
-          <h3 id="verdict-title" tabindex="-1"></h3>
+        <div class="result-reasons">
+          <div id="reasons-block">
+            <h3 class="list-title" data-s="reasonsHeading"></h3>
+            <ul id="reasons" class="reason-list"></ul>
+          </div>
+          <div id="good-block">
+            <h3 class="list-title" data-s="goodSignsHeading"></h3>
+            <ul id="good" class="reason-list"></ul>
+          </div>
         </div>
-      </div>
-      <p id="verdict-advice" class="advice"></p>
-
-      <div id="reasons-block">
-        <h3 class="list-title" data-s="reasonsHeading"></h3>
-        <ul id="reasons" class="reason-list"></ul>
-      </div>
-      <div id="good-block">
-        <h3 class="list-title" data-s="goodSignsHeading"></h3>
-        <ul id="good" class="reason-list"></ul>
       </div>
     </section>
   </div>
 
-  <section class="help-row">
-    <a class="tile tile-green" href="tel:1799">
-      <span class="pill" data-s="helpPill"></span>
-      <span class="tile-big">1799</span>
-      <span data-s="helpCall"></span>
-    </a>
-    <a class="tile tile-blue" href="https://www.scamshield.gov.sg" target="_blank" rel="noopener">
-      <span class="pill" data-s="webPill"></span>
-      <span class="tile-big tile-site">scamshield.gov.sg</span>
-      <span data-s="helpWebsite"></span>
-    </a>
+  <!-- ============ How it works ============ -->
+  <section class="section" id="how" aria-labelledby="how-title">
+    <div class="container">
+      <div class="section-head">
+        <p class="label-sm" data-s="navHow"></p>
+        <h2 class="section-title" id="how-title" data-s="howHeading"></h2>
+      </div>
+      <ol class="how-steps" id="how-steps"></ol>
+    </div>
   </section>
 
-  <footer>
-    <p><span data-s="madeBy"></span> · <a href="https://zkkatie.github.io/portfolio-kt/" target="_blank" rel="noopener" data-s="portfolioLink"></a></p>
-  </footer>
+  <!-- ============ Warning signs guide ============ -->
+  <section class="section" id="signs" aria-labelledby="signs-title">
+    <div class="container">
+      <div class="section-head">
+        <p class="label-sm" data-s="navSigns"></p>
+        <h2 class="section-title" id="signs-title" data-s="signsHeading"></h2>
+        <p class="section-text" data-s="signsText"></p>
+      </div>
+      <ul class="sign-grid" id="sign-grid"></ul>
+    </div>
+  </section>
+
+  <!-- ============ Get help ============ -->
+  <section class="section section-help" id="help" aria-labelledby="help-title">
+    <div class="container help-inner">
+      <p class="label-sm" data-s="navHelp"></p>
+      <h2 class="section-title" id="help-title" data-s="helpHeading"></h2>
+      <p class="section-text" data-s="helpText"></p>
+      <div class="help-row">
+        <a class="help-link" href="tel:1799">
+          <span class="label-sm" data-s="helpPill"></span>
+          <span class="help-big">1799</span>
+          <span data-s="helpCall"></span>
+        </a>
+        <a class="help-link" href="https://www.scamshield.gov.sg" target="_blank" rel="noopener">
+          <span class="label-sm" data-s="webPill"></span>
+          <span class="help-big help-site">scamshield.gov.sg</span>
+          <span data-s="helpWebsite"></span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ About and privacy ============ -->
+  <section class="section" id="about" aria-labelledby="about-title">
+    <div class="container">
+      <div class="section-head">
+        <p class="label-sm" data-s="navAbout"></p>
+        <h2 class="section-title" id="about-title" data-s="aboutHeading"></h2>
+      </div>
+      <div class="about-grid" id="about-grid"></div>
+    </div>
+  </section>
 </main>
+
+<!-- ============ Footer ============ -->
+<footer class="site-footer">
+  <div class="container footer-grid">
+    <div class="footer-brand">
+      <img src="assets/logo.png" alt="Kaypoh Jaga" width="334" height="180">
+      <p data-s="footerAbout"></p>
+    </div>
+    <nav aria-labelledby="f-explore">
+      <h2 class="footer-title" id="f-explore" data-s="footerExplore"></h2>
+      <ul>
+        <li><a href="#check" data-s="navCheck"></a></li>
+        <li><a href="#how" data-s="navHow"></a></li>
+        <li><a href="#signs" data-s="navSigns"></a></li>
+        <li><a href="#about" data-s="navAbout"></a></li>
+      </ul>
+    </nav>
+    <nav aria-labelledby="f-help">
+      <h2 class="footer-title" id="f-help" data-s="footerHelp"></h2>
+      <ul>
+        <li><a href="tel:1799" data-s="footerHelpline"></a></li>
+        <li><a href="https://www.scamshield.gov.sg" target="_blank" rel="noopener">scamshield.gov.sg</a></li>
+      </ul>
+    </nav>
+    <nav aria-labelledby="f-maker">
+      <h2 class="footer-title" id="f-maker" data-s="madeBy"></h2>
+      <ul>
+        <li><a href="https://zkkatie.github.io/portfolio-kt/" target="_blank" rel="noopener" data-s="portfolioLink"></a></li>
+        <li><a href="https://github.com/zkkatie/KayPoh-Jaga" target="_blank" rel="noopener">GitHub</a></li>
+      </ul>
+    </nav>
+  </div>
+  <div class="container footer-bottom">
+    <p data-s="footerSmall"></p>
+  </div>
+</footer>
+
 <script type="module" src="js/app.js"></script>
 </body>
 </html>

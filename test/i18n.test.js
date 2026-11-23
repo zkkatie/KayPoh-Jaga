@@ -7,7 +7,7 @@ import { RULES, GOOD_SIGNS } from "../js/engine.js";
 function paths(obj, prefix = "") {
   return Object.entries(obj).flatMap(([k, v]) => {
     const p = prefix ? `${prefix}.${k}` : k;
-    if (Array.isArray(v)) return v.map((_, i) => `${p}[${i}]`);
+    if (Array.isArray(v)) return v.flatMap((x, i) => (x && typeof x === "object" ? paths(x, `${p}[${i}]`) : [`${p}[${i}]`]));
     return v && typeof v === "object" ? paths(v, p) : [p];
   });
 }
